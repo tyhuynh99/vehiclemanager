@@ -8,9 +8,14 @@ import java.util.List;
 
 @Getter
 @Setter
-@Builder
-public class ListResponse<T> {
-    private String href;
+public class ListResponse<T> extends BaseResponse {
     private int count;
     private List<T> items;
+
+    @Builder
+    public ListResponse(String href, String method, int count, List<T> items) {
+        super(href, method);
+        this.count = count;
+        this.items = items;
+    }
 }

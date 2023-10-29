@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class VehicleDTO {
-    private Long id;
+    private String vin;
     private String name;
     private String brand;
     private String bodyStyle;

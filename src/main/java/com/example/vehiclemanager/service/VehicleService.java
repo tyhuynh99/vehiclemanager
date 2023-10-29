@@ -10,4 +10,6 @@ public interface VehicleService {
     VehicleDTO update(VehicleDTO dto);
 
     List<VehicleDTO> findAll();
+
+    VehicleDTO findByVin(String vin);
 }
