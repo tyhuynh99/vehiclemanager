@@ -9,5 +9,5 @@ public class VehicleDTO {
     private Long id;
     private String name;
     private String brand;
-    private String type;
+    private String bodyStyle;
 }
