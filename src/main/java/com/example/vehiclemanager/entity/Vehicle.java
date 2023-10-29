@@ -17,6 +17,6 @@ public class Vehicle {
     private String name;
     @Column(name = "brand")
     private String brand;
-    @Column(name = "type")
-    private String type;
+    @Column(name = "body_style")
+    private String bodyStyle;
 }
