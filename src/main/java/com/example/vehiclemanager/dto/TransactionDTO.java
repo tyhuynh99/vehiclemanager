@@ -14,4 +14,7 @@ public class TransactionDTO {
     private String name;
     private String brand;
     private String bodyStyle;
+    private String firstname;
+    private String lastname;
+    private String phoneNo;
 }

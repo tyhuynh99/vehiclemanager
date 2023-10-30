@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 @Controller("/market")
 public class MarketController {
@@ -29,7 +30,7 @@ public class MarketController {
     })
     @PostMapping(name = "/buy")
     public ResponseEntity<ObjectResponse<TransactionDTO>> buyVehicle(
-            @RequestBody BuyVehicleInfo buyVehicleInfo,
+            @Valid @RequestBody BuyVehicleInfo buyVehicleInfo,
             HttpServletRequest request) {
         TransactionDTO transactionDTO = service.buyVehicle(buyVehicleInfo);
         ObjectResponse<TransactionDTO> response = ObjectResponse.<TransactionDTO>builder()

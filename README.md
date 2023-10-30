@@ -1,11 +1,10 @@
 # Vehicle Manager
-
-
-## Installation
-
-
+Sample showcase project
 ## Usage
-
+### Swagger
+````
+http://localhost:8080/swagger-ui/
+````
 
 ## Contributing
 

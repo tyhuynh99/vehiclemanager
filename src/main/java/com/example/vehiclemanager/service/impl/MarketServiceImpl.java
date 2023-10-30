@@ -32,17 +32,23 @@ public class MarketServiceImpl implements MarketService {
     @Override
     public TransactionDTO buyVehicle(BuyVehicleInfo dto) {
         String vin = dto.getVin();
-        Double price = dto.getPrice();
+
         Optional<Vehicle> vehicleOpt = vehicleRepository.findByVinAndIsBuyFalse(vin);
         if (vehicleOpt.isEmpty()) {
             String msg = String.format("Vehicle is not found with vin %s", vin);
             log.info(msg);
             throw new EntityNotFoundException(msg);
         }
+
         Vehicle vehicle = vehicleOpt.get();
         Transaction transaction = mapper.convertValue(vehicle, Transaction.class);
-        transaction.setPrice(price);
+        transaction.setPrice(dto.getPrice());
+        transaction.setFirstname(dto.getFirstname());
+        transaction.setLastname(dto.getLastname());
+        transaction.setPhoneNo(dto.getPhoneNo());
+
         transaction = transactionRepository.save(transaction);
+
         return mapper.convertValue(transaction, TransactionDTO.class);
     }
 }

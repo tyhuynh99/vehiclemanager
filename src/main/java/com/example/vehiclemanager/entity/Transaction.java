@@ -18,14 +18,20 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "vin")
+    @Column(name = "vin", nullable = false)
     private String vin;
-    @Column(name = "price")
+    @Column(name = "price", nullable = false)
     private Double price;
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
-    @Column(name = "brand")
+    @Column(name = "brand", nullable = false)
     private String brand;
-    @Column(name = "body_style")
+    @Column(name = "body_style", nullable = false)
     private String bodyStyle;
+    @Column(name = "first_name", length = 50, nullable = false)
+    private String firstname;
+    @Column(name = "last_name", length = 80, nullable = false)
+    private String lastname;
+    @Column(name = "phone_no", length = 11, nullable = false)
+    private String phoneNo;
 }
