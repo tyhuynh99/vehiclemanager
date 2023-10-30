@@ -27,6 +27,10 @@ public class VehicleController {
         this.service = service;
     }
 
+    @Operation(summary = "Get all vehicle in inventory", description = "Returns a list of vehicle")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved")
+    })
     @GetMapping
     public ResponseEntity<ListResponse<VehicleDTO>> getAll(HttpServletRequest request) {
         List<VehicleDTO> vehicleList = service.findAll();
