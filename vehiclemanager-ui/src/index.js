@@ -1,22 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider, } from 'react-router-dom';
-import { Hompage } from './page/homepage';
+import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import { Homepage } from './page/homepage';
 import { Transaction } from './page/transaction';
-
-const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Hompage />,
-    },
-    {
-        path: "/transaction",
-        element: <Transaction />,
-    },
-]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/history" element={<Transaction />} />
+            </Routes>
+        </BrowserRouter>
     </React.StrictMode>
 );
