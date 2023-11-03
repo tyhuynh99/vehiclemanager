@@ -1,2 +1,4 @@
 /.idea/
 /target/
+/vehiclemanager-ui/node_modules/
+/vehiclemanager-ui/build/
