@@ -7,6 +7,7 @@ import com.example.vehiclemanager.entity.Vehicle;
 import com.example.vehiclemanager.repository.TransactionRepository;
 import com.example.vehiclemanager.repository.VehicleRepository;
 import com.example.vehiclemanager.service.MarketService;
+import com.example.vehiclemanager.service.SlackService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -21,12 +22,15 @@ public class MarketServiceImpl implements MarketService {
     private final TransactionRepository transactionRepository;
     private final ObjectMapper mapper;
 
+    private final SlackService slackService;
+
     public MarketServiceImpl(VehicleRepository vehicleRepository,
                              TransactionRepository transactionRepository,
-                             ObjectMapper mapper) {
+                             ObjectMapper mapper, SlackService slackService) {
         this.vehicleRepository = vehicleRepository;
         this.transactionRepository = transactionRepository;
         this.mapper = mapper;
+        this.slackService = slackService;
     }
 
     @Override
@@ -48,7 +52,17 @@ public class MarketServiceImpl implements MarketService {
         transaction.setPhoneNo(dto.getPhoneNo());
 
         transaction = transactionRepository.save(transaction);
+        TransactionDTO transactionDto = mapper.convertValue(transaction, TransactionDTO.class);
 
-        return mapper.convertValue(transaction, TransactionDTO.class);
+        notifyBuyVehicle(transactionDto);
+
+        return transactionDto;
+    }
+
+    private void notifyBuyVehicle(TransactionDTO dto) {
+        StringBuilder message = new StringBuilder("Transaction has been made. ");
+        message.append("Detail: ");
+        message.append(dto.toString());
+        slackService.sendSlackNotification(message.toString());
     }
 }

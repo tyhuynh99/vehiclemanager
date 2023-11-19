@@ -18,7 +18,6 @@ import java.util.stream.Collectors;
 public class VehicleServiceImpl implements VehicleService {
     private final VehicleRepository repository;
     private final ObjectMapper mapper;
-
     public VehicleServiceImpl(VehicleRepository repository, ObjectMapper mapper) {
         this.repository = repository;
         this.mapper = mapper;

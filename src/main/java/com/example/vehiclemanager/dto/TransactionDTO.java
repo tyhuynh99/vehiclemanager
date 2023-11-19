@@ -17,4 +17,19 @@ public class TransactionDTO {
     private String firstname;
     private String lastname;
     private String phoneNo;
+
+    @Override
+    public String toString() {
+        return "TransactionDTO{" +
+                "id=" + id +
+                ", vin='" + vin + '\'' +
+                ", price=" + price +
+                ", name='" + name + '\'' +
+                ", brand='" + brand + '\'' +
+                ", bodyStyle='" + bodyStyle + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", phoneNo='" + phoneNo + '\'' +
+                '}';
+    }
 }
